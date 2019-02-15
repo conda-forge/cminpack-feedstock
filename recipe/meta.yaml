@@ -17,7 +17,7 @@ source:
 
 build:
   skip: true  # [win and (vc<14 or blas_impl == 'openblas')]
-  number: 2
+  number: 3
 
 requirements:
   build:
