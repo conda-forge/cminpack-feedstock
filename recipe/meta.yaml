@@ -16,8 +16,8 @@ source:
     - 0001-Remove-tlmdif-test-example.patch  # [blas_impl == 'openblas']
 
 build:
-  skip: true  # [win and (vc<14 or blas_impl == 'openblas')]
-  number: 1
+  skip: true  # [win and vc<14]
+  number: 2
 
 requirements:
   build:
