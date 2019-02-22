@@ -2,6 +2,9 @@
 mkdir build
 cd build
 
+# Forcing `noblas` in this branch, because of issue #4
+blas_impl=noblas
+
 USE_BLAS=OFF
 if [ ! -z "$blas_impl" ] && [ "$blas_impl" != "noblas" ]; then
   USE_BLAS=ON
