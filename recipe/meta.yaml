@@ -26,7 +26,6 @@ requirements:
     - cmake
     - ninja
   host:  # [local_blas_impl == 'openblas']
-    - {{ local_blas_impl }}
     - openblas-devel  # [local_blas_impl == 'openblas']
 
 test:
