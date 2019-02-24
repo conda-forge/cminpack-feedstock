@@ -10,8 +10,11 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      osx_:
-        CONFIG: osx_
+      osx_local_blas_implnoblas:
+        CONFIG: osx_local_blas_implnoblas
+        UPLOAD_PACKAGES: False
+      osx_local_blas_implopenblas:
+        CONFIG: osx_local_blas_implopenblas
         UPLOAD_PACKAGES: False
 
   steps:
