@@ -1,5 +1,3 @@
-blas_impl:
-- openblas
 c_compiler:
 - gcc
 channel_sources:
@@ -10,3 +8,5 @@ cxx_compiler:
 - gxx
 docker_image:
 - condaforge/linux-anvil-comp7
+local_blas_impl:
+- noblas

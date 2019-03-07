@@ -1,3 +1,6 @@
-blas_impl:
+local_blas_impl:
   - noblas
-  - openblas  # [unix]
+  - openblas  # [linux64]
+  - openblas  # [osx]
+  - openblas  # [aarch64]
+  - openblas  # [ppc64le]

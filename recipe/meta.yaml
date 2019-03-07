@@ -13,11 +13,11 @@ source:
     # be removed for next version
     - 0001-Fix-compilation-of-examples-tlmdif_-on-Windows.patch  # [win]
     # Needed because OpenBLAS changes some values in this test
-    - 0001-Remove-tlmdif-test-example.patch  # [blas_impl == 'openblas']
+    - 0001-Remove-tlmdif-test-example.patch  # [local_blas_impl == 'openblas']
 
 build:
   skip: true  # [win and vc<14]
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -25,8 +25,8 @@ requirements:
     - {{ compiler('cxx') }}  # Needed because CMake project is not declared as C
     - cmake
     - ninja
-  host:  # [blas_impl == 'openblas']
-    - openblas-devel  # [blas_impl == 'openblas']
+  host:  # [local_blas_impl == 'openblas']
+    - openblas-devel  # [local_blas_impl == 'openblas']
 
 test:
   commands:
