@@ -17,7 +17,7 @@ source:
 
 build:
   skip: true  # [win and vc<14]
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -25,8 +25,8 @@ requirements:
     - {{ compiler('cxx') }}  # Needed because CMake project is not declared as C
     - cmake
     - ninja
-  host:  # [local_blas_impl == 'openblas']
-    - openblas-devel  # [local_blas_impl == 'openblas']
+  host:
+    - libblas  # [unix]
 
 test:
   commands:
