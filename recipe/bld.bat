@@ -1,7 +1,7 @@
 mkdir build
 cd build
 
-cmake -G "Ninja" ^
+cmake -G "NMake Makefiles" ^
   -DCMAKE_BUILD_TYPE=RelWithDebInfo ^
   -DBUILD_SHARED_LIBS:BOOL=ON ^
   -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
@@ -9,8 +9,7 @@ cmake -G "Ninja" ^
   -DUSE_BLAS:BOOL=OFF ^
   .. || goto :eof
 
-ninja || goto :eof
-ninja install || goto :eof
+cmake --build . --config Release --target install || goto :eof
 
 unix2dos ../examples/ref/*.ref
 ctest --output-on-failure
