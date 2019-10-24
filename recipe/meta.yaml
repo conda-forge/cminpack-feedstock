@@ -17,7 +17,9 @@ source:
 
 build:
   skip: true  # [win and vc<14]
-  number: 4
+  number: 5
+  run_exports:
+    - {{ pin_subpackage('cminpack', max_pin='x.x') }}
 
 requirements:
   build:
