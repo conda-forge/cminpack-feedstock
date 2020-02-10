@@ -1,7 +1,7 @@
 mkdir build
 cd build
 
-cmake -G "NMake Makefiles" ^
+cmake -G Ninja ^
   -DCMAKE_BUILD_TYPE=RelWithDebInfo ^
   -DBUILD_SHARED_LIBS:BOOL=ON ^
   -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
