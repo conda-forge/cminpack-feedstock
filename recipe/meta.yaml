@@ -11,7 +11,7 @@ source:
   patches:
     # The following patch is already in `master` upstream, so can probably
     # be removed for next version
-    - 0001-Fix-compilation-of-examples-tlmdif_-on-Windows.patch  # [win]
+    #- 0001-Fix-compilation-of-examples-tlmdif_-on-Windows.patch  # [win]
     # Needed because OpenBLAS changes some values in this test
     - 0001-Remove-tlmdif-test-example.patch  # [local_blas_impl == 'openblas']
 
