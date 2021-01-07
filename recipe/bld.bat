@@ -11,5 +11,5 @@ cmake -G "NMake Makefiles" ^
 
 cmake --build . --config Release --target install || goto :eof
 
-unix2dos ../examples/ref/*.ref
+unix2dos ../examples/ref/*.ref || goto :eof
 ctest --output-on-failure
