@@ -24,8 +24,9 @@ requirements:
     - {{ compiler('cxx') }}  # Needed because CMake project is not declared as C
     - cmake
     - ninja
+    - m2-dos2unix  # [win]
   host:
-    - libblas  # [unix]
+    - libblas
 
 test:
   commands:
