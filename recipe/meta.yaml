@@ -9,9 +9,6 @@ source:
   url: https://github.com/devernay/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: b891f33ffcfb8b246bb6147a4da6308cdb2386ca42a99892ff9b2e884f8b0386
   patches:
-    # The following patch is already in `master` upstream, so can probably
-    # be removed for next version
-    #- 0001-Fix-compilation-of-examples-tlmdif_-on-Windows.patch  # [win]
     # Needed because OpenBLAS changes some values in this test
     - 0001-Remove-tlmdif-test-example.patch  # [local_blas_impl == 'openblas']
 
@@ -36,7 +33,7 @@ test:
     - if not exist %LIBRARY_BIN%\\cminpack.dll exit 1  # [win]
     - if not exist %LIBRARY_INC%\\cminpack-1\\cminpack.h exit 1  # [win]
     - if not exist %LIBRARY_INC%\\cminpack-1\\minpack.h exit 1  # [win]
-    - if not exist %LIBRARY_PREFIX%\\share\\cmake\\CMinpack\\CMinpackConfig.cmake exit 1  # [win]
+    - if not exist %LIBRARY_PREFIX%\\share\\cminpack\\CMinpackConfig.cmake exit 1  # [win]
 
     - test -a $PREFIX/lib/libcminpack$SHLIB_EXT  # [unix]
     - test -f $PREFIX/include/cminpack-1/cminpack.h  # [unix]
