@@ -1,5 +1,5 @@
 {% set name = "cminpack" %}
-{% set version = "1.3.7" %}
+{% set version = "1.3.8" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/devernay/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: b891f33ffcfb8b246bb6147a4da6308cdb2386ca42a99892ff9b2e884f8b0386
+  sha256: 3ea7257914ad55eabc43a997b323ba0dfee0a9b010d648b6d5b0c96425102d0e
   patches:
     # Needed because OpenBLAS changes some values in this test
     - 0001-Remove-tlmdif-test-example.patch  # [local_blas_impl == 'openblas']
