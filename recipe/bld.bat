@@ -8,5 +8,5 @@ cmake -G "Ninja" -LAH ^
 
 cmake --build build --config Release --target install || goto :eof
 
-unix2dos ../examples/ref/*.ref || goto :eof
-ctest --output-on-failure --output-on-failure
+unix2dos ./examples/ref/*.ref || goto :eof
+ctest --output-on-failure --test-dir build
