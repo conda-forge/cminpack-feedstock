@@ -1,24 +1,16 @@
 #!/bin/bash
-mkdir build
-cd build
 
-USE_BLAS=OFF
-if [ ! -z "$blas_impl" ] && [ "$blas_impl" != "noblas" ]; then
-  USE_BLAS=ON
-fi
+cmake ${CMAKE_ARGS} -G "Ninja" -LAH \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_SHARED_LIBS=ON \
+  -DCMAKE_PREFIX_PATH=$PREFIX \
+  -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+  -DCMINPACK_LIB_INSTALL_DIR="lib" \
+  -DUSE_BLAS=OFF \
+  -B build -S .
 
-cmake ${CMAKE_ARGS} -G "Ninja" \
-  -D CMAKE_BUILD_TYPE=RelWithDebInfo \
-  -D BUILD_SHARED_LIBS:BOOL=ON \
-  -D CMAKE_PREFIX_PATH=$PREFIX \
-  -D CMAKE_INSTALL_PREFIX:PATH=$PREFIX \
-  -D CMINPACK_LIB_INSTALL_DIR="lib" \
-  -D USE_BLAS:BOOL=$USE_BLAS \
-  ..
-
-ninja
-ninja install
+cmake --build build --target install --parallel ${CPU_COUNT}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
-ctest --output-on-failure
+ctest --output-on-failure --test-dir build --output-on-failure -j ${CPU_COUNT}
 fi

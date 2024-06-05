@@ -8,13 +8,9 @@ package:
 source:
   url: https://github.com/devernay/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: aa37bac5b5caaa4f5805ea5c4240e3834c993672f6dab0b17190ee645e251c9f
-  patches:
-    # Needed because OpenBLAS changes some values in this test
-    - 0001-Remove-tlmdif-test-example.patch  # [local_blas_impl == 'openblas']
 
 build:
-  skip: true  # [win and vc<14]
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('cminpack', max_pin='x.x') }}
 
@@ -22,7 +18,6 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}  # Needed because CMake project is not declared as C
     - cmake
     - ninja
     - m2-dos2unix  # [win]
