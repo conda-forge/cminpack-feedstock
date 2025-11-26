@@ -15,4 +15,4 @@ docker_image:
 libblas:
 - 3.9.* *netlib
 target_platform:
-- linux-64
+- linux-aarch64
