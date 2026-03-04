@@ -1,0 +1,55 @@
+context:
+  version: "1.3.11"
+
+package:
+  name: cminpack
+  version: ${{ version }}
+
+source:
+  url: https://github.com/devernay/cminpack/archive/v${{ version }}.tar.gz
+  sha256: 45675fac0a721a1c7600a91a9842fe1ab313069db163538f2923eaeddb0f46de
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - cmake
+    - ninja
+    - if: win
+      then: m2-dos2unix
+  host:
+    - libblas
+  run_exports:
+    - ${{ pin_subpackage('cminpack', upper_bound='x.x') }}
+
+tests:
+  - script:
+      - if: win
+        then:
+          - if not exist %LIBRARY_LIB%\\cminpack.lib exit 1
+          - if not exist %LIBRARY_BIN%\\cminpack.dll exit 1
+          - if not exist %LIBRARY_INC%\\cminpack-1\\cminpack.h exit 1
+          - if not exist %LIBRARY_INC%\\cminpack-1\\minpack.h exit 1
+          - if not exist %LIBRARY_PREFIX%\\share\\cminpack\\CMinpackConfig.cmake exit 1
+      - if: unix
+        then:
+          - test -a $PREFIX/lib/libcminpack$SHLIB_EXT
+          - test -f $PREFIX/include/cminpack-1/cminpack.h
+          - test -f $PREFIX/include/cminpack-1/minpack.h
+          - test -f $PREFIX/share/cminpack/CMinpackConfig.cmake
+
+about:
+  homepage: http://devernay.free.fr/hacks/cminpack/index.html
+  license: LicenseRef-MINPACK  # Custom BSD-like
+  license_family: BSD
+  summary: CMinpack includes software for solving nonlinear equations and nonlinear least squares problems
+  license_file: CopyrightMINPACK.txt
+  repository: https://github.com/devernay/cminpack
+
+extra:
+  recipe-maintainers:
+    - tadeu
+    - jschueller
