@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/cminpack-feedst
 
 Home: http://devernay.free.fr/hacks/cminpack/index.html
 
-Package license: MINPACK
+Package license: LicenseRef-MINPACK
 
 Summary: CMinpack includes software for solving nonlinear equations and nonlinear least squares problems
 
