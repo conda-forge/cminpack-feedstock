@@ -1,5 +1,5 @@
 context:
-  version: "1.3.11"
+  version: "1.3.13"
 
 package:
   name: cminpack
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/devernay/cminpack/archive/v${{ version }}.tar.gz
-  sha256: 45675fac0a721a1c7600a91a9842fe1ab313069db163538f2923eaeddb0f46de
+  sha256: cf0d6cc654f8c63bb65979056ea5bcda1046768b1dfe83ceda504924d8331167
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
