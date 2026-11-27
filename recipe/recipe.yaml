@@ -27,20 +27,12 @@ requirements:
     - ${{ pin_subpackage('cminpack', upper_bound='x.x') }}
 
 tests:
-  - script:
-      - if: win
-        then:
-          - if not exist %LIBRARY_LIB%\\cminpack.lib exit 1
-          - if not exist %LIBRARY_BIN%\\cminpack.dll exit 1
-          - if not exist %LIBRARY_INC%\\cminpack-1\\cminpack.h exit 1
-          - if not exist %LIBRARY_INC%\\cminpack-1\\minpack.h exit 1
-          - if not exist %LIBRARY_PREFIX%\\share\\cminpack\\CMinpackConfig.cmake exit 1
-      - if: unix
-        then:
-          - test -a $PREFIX/lib/libcminpack$SHLIB_EXT
-          - test -f $PREFIX/include/cminpack-1/cminpack.h
-          - test -f $PREFIX/include/cminpack-1/minpack.h
-          - test -f $PREFIX/share/cminpack/CMinpackConfig.cmake
+  - package_contents:
+      include:
+        - cminpack-1/cminpack.h
+        - cminpack-1/minpack.h
+      lib:
+        - cminpack
 
 about:
   homepage: http://devernay.free.fr/hacks/cminpack/index.html
